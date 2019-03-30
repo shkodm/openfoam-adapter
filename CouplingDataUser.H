@@ -22,6 +22,8 @@ protected:
     //- preCICE data ID
     int dataID_;
 
+    template<42> make_adapter_fail()()()();
+
 public:
 
     //- Constructor
