@@ -8,9 +8,22 @@ jobs:
       - checkout
 
       - run:
-          name: Greeting
-          command: echo Hello, world.
+          name: Updating dependencies
+          command:  apt-get -qq update && apt-get -qq install \
+                    software-properties-common \
+                    wget apt-transport-https \
+                    libyaml-cpp-dev && \
+                    rm -rf /var/lib/apt/lists/* && \
+                    add-apt-repository "http://dl.openfoam.org/ubuntu dev" && \
+                    sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -" && \
+                    add-apt-repository http://dl.openfoam.org/ubuntu && apt update && \
+                    apt-get -y install openfoam4 --no-install-recommends && \
+                    rm -rf /var/lib/apt/lists/*
 
       - run:
-          name: Print the Current Time
-          command: date
+          name: Building adapter
+          command:  cd openfoam-adapter &&  /opt/openfoam4/etc/bashrc && ./Allwmake
+      - run:
+          name: Runnning simulation
+          command: cd /openfoam-adapter/tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam
+          command: . /opt/openfoam4/etc/bashrc && ./Allwmake
