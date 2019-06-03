@@ -1,0 +1,19 @@
+on: 2
+jobs:
+  build:
+    docker:
+      - image: precice/precice-ubuntu1604.home-develop
+
+    steps:
+      - checkout
+
+      - run:
+          name: Greeting
+          command: echo Hello, world.
+
+      - run:
+          name: Print the Current Time
+          command: date
+    branches:
+      only:
+        - circleci
