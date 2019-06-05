@@ -4,6 +4,7 @@ jobs:
     docker:
       - image: precice/precice-ubuntu1604.home-develop
         user: root
+    working-directory: ~/openfoam-adapter
 
     steps:
       - checkout
@@ -23,9 +24,9 @@ jobs:
 
       - run:
           name: Building adapter
-          command:  cd /root/project &&  /opt/openfoam4/etc/bashrc && ./Allwmake
+          command: . /opt/openfoam4/etc/bashrc && ./Allwmake
 
       - run:
           name: Runnning simulation
-          command: cd /root/project/tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam &&
+          command: cd tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam &&
                   . /opt/openfoam4/etc/bashrc && ./Allwmake
