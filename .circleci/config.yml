@@ -4,23 +4,26 @@ jobs:
     docker:
       - image: precice/precice-ubuntu1604.home-develop
         user: root
+      - image: precicecoupling/openfoam
+        user: root
+
     working-directory: ~/openfoam-adapter
 
     steps:
       - checkout
 
-      - run:
-          name: Updating dependencies
-          command:  apt-get -qq update && apt-get -qq install
-                    software-properties-common
-                    wget apt-transport-https 
-                    libyaml-cpp-dev && 
-                    rm -rf /var/lib/apt/lists/* && 
-                    add-apt-repository "http://dl.openfoam.org/ubuntu dev" && 
-                    sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -" && 
-                    add-apt-repository http://dl.openfoam.org/ubuntu && apt update && 
-                    apt-get -y install openfoam4 --no-install-recommends && 
-                    rm -rf /var/lib/apt/lists/*
+        #- run:
+        #    name: Updating dependencies
+        #    command:  apt-get -qq update && apt-get -qq install
+        #              software-properties-common
+        #              wget apt-transport-https 
+        #              libyaml-cpp-dev && 
+        #              rm -rf /var/lib/apt/lists/* && 
+        #              add-apt-repository "http://dl.openfoam.org/ubuntu dev" && 
+        #              sh -c "wget -O - http://dl.openfoam.org/gpg.key | apt-key add -" && 
+        #              add-apt-repository http://dl.openfoam.org/ubuntu && apt update && 
+        #              apt-get -y install openfoam4 --no-install-recommends && 
+        #              rm -rf /var/lib/apt/lists/*
 
       - run:
           name: Building adapter
