@@ -23,9 +23,9 @@ jobs:
 
       - run:
           name: Building adapter
-          command:  cd openfoam-adapter &&  /opt/openfoam4/etc/bashrc && ./Allwmake
+          command:  cd /root/project &&  /opt/openfoam4/etc/bashrc && ./Allwmake
 
       - run:
           name: Runnning simulation
-          command: cd /openfoam-adapter/tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam &&
+          command: cd /root/project/tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam &&
                   . /opt/openfoam4/etc/bashrc && ./Allwmake
