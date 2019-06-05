@@ -29,4 +29,4 @@ jobs:
       - run:
           name: Runnning simulation
           command: cd tutorials/CHT/flow-over-plate/buoyantPimpleFoam-laplacianFoam &&
-                  . /opt/openfoam4/etc/bashrc && ./Allwmake
+                  . /opt/openfoam4/etc/bashrc && ./Allrun
