@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: precice/precice-ubuntu1604.home-develop
-        user: root
       - image: precicecoupling/openfoam
-        user: root
 
     working-directory: ~/openfoam-adapter
 
