@@ -36,7 +36,7 @@
         <mapping:nearest-neighbor direction="write" from="Solid-Mesh" to="Fluid-Mesh" constraint="consistent" timing="initial"/>
     </participant>
 
-    <m2n:sockets from="Fluid" to="Solid" distribution-type="gather-scatter"/ exchange-directory="/ExchangeDir/" network="eth0"/>
+    <m2n:sockets from="Fluid" to="Solid" distribution-type="gather-scatter" exchange-directory="/ExchangeDir/" network="eth0"/>
 
     <coupling-scheme:serial-implicit>
         <timestep-length value="0.01"/>
